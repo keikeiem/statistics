@@ -3,10 +3,18 @@
 		<meta charset="utf-8">
 		<title>Statistics</title>
 		<script type="text/javascript" src="./src/statistics.js"></script>
-		<script type="text/javascript" src="./modules/average.js"></script>
+		<script type="text/javascript" src="./modules/basic.js"></script>
+		<script type="text/javascript" src="./modules/matrix.js"></script>
 		<script type="text/javascript">
 			var jsStat = new jsStatistics();
-			var result = jsStat.computeAverage([5, 3, 2, 8, 3, 1, 2, 5]);
+			var testArray = [5, 3, 2, 8, 3, 1, 2, 5, 3];
+
+			var average = jsStat.computeAverage(testArray);
+			var variance = jsStat.computeVariance(testArray);
+			var standardDeviation = jsStat.computeStandardDeviation(testArray);
+
+			// matrix test
+			var matrix = jsStat.setMatrixFromArray(testArray, 3);
 		</script>
 	</head>
 	<body>
