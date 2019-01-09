@@ -7,16 +7,22 @@
 		<script type="text/javascript" src="./modules/matrix.js"></script>
 		<script type="text/javascript">
 			var jsStat = new jsStatistics();
-			var testArray = [5, 3, 2, 8, 3, 1, 2, 5, 3];
+			var testArray = [
+				1, 0, 0, 0,
+				0, 1, 0, 0,
+				0, 0, 1, 1,
+				0, 0, 1, 1
+			];
 
 			var average = jsStat.computeAverage(testArray);
 			var variance = jsStat.computeVariance(testArray);
 			var standardDeviation = jsStat.computeStandardDeviation(testArray);
 
 			// matrix test
-			var matrix = jsStat.setMatrixFromArray(testArray, 3);
-			var determinant = jsStat.computeMatrixDeterminant(matrix);
-			console.log(determinant);
+			var matrix = jsStat.setMatrixFromArray(testArray, 4);
+			var minor = jsStat.computeMatrixDeterminant(matrix);
+			console.log(matrix);
+			console.log(minor);
 		</script>
 	</head>
 	<body>
