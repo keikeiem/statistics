@@ -32,8 +32,39 @@
         return matrixArray;
     };
 
-    jsStatisticsAPI.getMatrixSize = function(matrix) {
+    jsStatisticsAPI.isSquareMatrix = function(matrix) {
+        try {
+            return Boolean(matrix.length === matrix[0].length);
+        } catch(e) {
+            console.log('invalid matrix');
+            return false;
+        }
+    };
 
+    jsStatisticsAPI.computeMatrixMinor = function(matrix, rowIdx, columnIdx) {
+
+    };
+
+    jsStatisticsAPI.computeMatrixDeterminant = function(matrix) {
+        if (!this.isSquareMatrix(matrix)) {
+            console.log('the matrix is not square.');
+        }
+
+        // for (var i = 0; i < matrix.length; i++) {
+        //
+        // }
+        //
+        // var submatrix = [];
+        // if (matrix.length < 3) {
+        //     return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+        // } else {
+        //     for (var i = 1; i < matrix.length; i++) {
+        //         submatrix.push(matrix[i].slice(1))
+        //     }
+        //     submatrix.push()
+        // }
+        //
+        // return matrix[0][0] * this.computeMatrixDeterminant(submatrix);
     };
 
 }(jsStatistics.API));
