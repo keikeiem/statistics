@@ -8,10 +8,11 @@
 		<script type="text/javascript">
 			var jsStat = new jsStatistics();
 			var testArray = [
-				1, 0, 0, 0,
-				0, 1, 0, 0,
-				0, 0, 1, 1,
-				0, 0, 1, 1
+				1, 2, 3, 4, 1,
+				5, 6, 3, 3, 1,
+				9, 10, 0, 12, 1,
+				13, 14, 15, 16, 1,
+				2, 3, 2, 2, 2
 			];
 
 			var average = jsStat.computeAverage(testArray);
@@ -19,10 +20,10 @@
 			var standardDeviation = jsStat.computeStandardDeviation(testArray);
 
 			// matrix test
-			var matrix = jsStat.setMatrixFromArray(testArray, 4);
+			var matrix = jsStat.setMatrixFromArray(testArray, 5);
 			var minor = jsStat.computeMatrixDeterminant(matrix);
-			console.log(matrix);
-			console.log(minor);
+			console.log({"matrix" : matrix});
+			console.log({"minor" : minor});
 		</script>
 	</head>
 	<body>
