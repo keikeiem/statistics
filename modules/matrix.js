@@ -61,26 +61,30 @@
             console.log('the matrix is not square.');
         }
 
+        if (matrix.length == 2) {
+            return ((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
+        } else {
+            var result = [];
+            for (var i = 0; i < matrix.length; i++) {
+                var submatrix = JSON.parse(JSON.stringify(matrix));
+                var multiplier = (0 + i) % 2 ? (-1 * matrix[0][i]) : matrix[0][i];
+                var subresult = 0;
+                submatrix = this.computeMatrixMinor(submatrix, 0, i);
+                subresult = multiplier * this.computeMatrixDeterminant(submatrix);
+                console.log({"multiplier" : multiplier, "submatrix" : submatrix, "subresult" : subresult});
+                result.push(subresult);
+    
+    
+                // if (submatrix.length > 1) {
+                // 	console.log(matrix);
+                // 	console.log('test : ', matrix[0][i] * this.computeMatrixDeterminant(submatrix))
+                // 	return matrix[0][i] * this.computeMatrixDeterminant(submatrix);
+                // }
+            }
+            console.log({"result" : result, "matrix" : matrix, "length" : matrix.length});
+            return result.reduce((partial_sum, a) => partial_sum + a,0); 
+        }
 
-		var result = [];
-		for (var i = 0; i < matrix.length; i++) {
-			var submatrix = JSON.parse(JSON.stringify(matrix));
-			var multiplier = (0 + i) % 2 ? (-1 * matrix[0][i]) : matrix[0][i];
-			while (submatrix.length > 2) {
-				submatrix = this.computeMatrixMinor(submatrix, 0, i);
-				multiplier = multiplier * submatrix[0][0];
-			}
-			console.log(multiplier);
-			result.push(multiplier);
-
-
-			// if (submatrix.length > 1) {
-			// 	console.log(matrix);
-			// 	console.log('test : ', matrix[0][i] * this.computeMatrixDeterminant(submatrix))
-			// 	return matrix[0][i] * this.computeMatrixDeterminant(submatrix);
-			// }
-		}
-		console.log(result);
     };
 
 }(jsStatistics.API));
