@@ -87,4 +87,40 @@
 
     };
 
+    jsStatisticsAPI.rowSwitching = function(matrix, ithRow, jthRow) {
+        /**
+         * Row-ith <=> Row-jth
+         */
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var tmp = minor[ithRow];
+        minor[ithRow] = minor[jthRow];
+        minor[jthRow] = tmp;
+        return minor;
+    }
+
+    jsStatisticsAPI.rowMultiplication = function(matrix, ithRow, constant) {
+        /**
+         * constant * Row-ith => Row-ith
+         */
+        if (constant == 0) {
+            return console.log("constant must be non-zero");
+        }
+        var minor = JSON.parse(JSON.stringify(matrix));
+        minor[ithRow] = minor[ithRow].map(x => x * constant);
+        return minor;
+    }
+
+    jsStatisticsAPI.rowAddition = function(matrix, ithRow, jthRow, constant) {
+        /**
+         * Row-ith + constant * Row-jth => Row-ith
+         */
+        if (constant == 0) {
+            return console.log("constant must be non-zero");
+        }
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var tmp = minor[jthRow].map(x => x * constant);
+        minor[ithRow] = minor[ithRow].map((x, i) => x + tmp[i]);
+        return minor;
+    }
+
 }(jsStatistics.API));

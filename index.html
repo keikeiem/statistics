@@ -24,6 +24,15 @@
 			var minor = jsStat.computeMatrixDeterminant(matrix);
 			console.log({"matrix" : matrix});
 			console.log({"minor" : minor});
+
+			var rowSwitching = jsStat.rowSwitching(matrix, 1, 2);
+			console.log({"rowSwitch" : rowSwitching});
+
+			var rowMultiplication = jsStat.rowMultiplication(matrix, 1, 3);
+			console.log({"rowMultiplication" : rowMultiplication});
+
+			var rowAddition = jsStat.rowAddition(matrix, 1, 2, -3);
+			console.log({"rowAddition" : rowAddition});
 		</script>
 	</head>
 	<body>
