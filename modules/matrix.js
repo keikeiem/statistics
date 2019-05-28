@@ -58,7 +58,7 @@
 
     jsStatisticsAPI.computeMatrixDeterminant = function(matrix) {
         if (!this.isSquareMatrix(matrix)) {
-            console.log('the matrix is not square.');
+            return console.log('the matrix is not square.');
         }
 
         if (matrix.length == 2) {
@@ -71,7 +71,7 @@
                 var subresult = 0;
                 submatrix = this.computeMatrixMinor(submatrix, 0, i);
                 subresult = multiplier * this.computeMatrixDeterminant(submatrix);
-                console.log({"multiplier" : multiplier, "submatrix" : submatrix, "subresult" : subresult});
+                // console.log({"multiplier" : multiplier, "submatrix" : submatrix, "subresult" : subresult});
                 result.push(subresult);
     
     
@@ -81,10 +81,62 @@
                 // 	return matrix[0][i] * this.computeMatrixDeterminant(submatrix);
                 // }
             }
-            console.log({"result" : result, "matrix" : matrix, "length" : matrix.length});
+            // console.log({"result" : result, "matrix" : matrix, "length" : matrix.length});
             return result.reduce((partial_sum, a) => partial_sum + a,0); 
         }
 
     };
+
+    jsStatisticsAPI.rowSwitching = function(matrix, ithRow, jthRow) {
+        /**
+         * Row-ith <=> Row-jth
+         */
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var tmp = minor[ithRow];
+        minor[ithRow] = minor[jthRow];
+        minor[jthRow] = tmp;
+        return minor;
+    }
+
+    jsStatisticsAPI.rowMultiplication = function(matrix, ithRow, constant) {
+        /**
+         * constant * Row-ith => Row-ith
+         */
+        if (constant == 0) {
+            return console.log("constant must be non-zero");
+        }
+        var minor = JSON.parse(JSON.stringify(matrix));
+        minor[ithRow] = minor[ithRow].map(x => x * constant);
+        return minor;
+    }
+
+    jsStatisticsAPI.rowAddition = function(matrix, ithRow, jthRow, constant) {
+        /**
+         * Row-ith + constant * Row-jth => Row-ith
+         */
+        if (constant == 0) {
+            return console.log("constant must be non-zero");
+        }
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var tmp = minor[jthRow].map(x => x * constant);
+        minor[ithRow] = minor[ithRow].map((x, i) => x + tmp[i]);
+        return minor;
+    }
+
+    jsStatisticsAPI.rowEchelonForm = function(matrix) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var numOfRow = minor.length;
+        var index = 0;
+        while (index != numOfRow) {
+            var diagonalValue = minor[index][index];
+            for (var i = index + 1; i < numOfRow; i++) {
+                var constant = (-1) * (minor[i][index] / diagonalValue);
+                minor = jsStatisticsAPI.rowAddition(minor, i, index, constant);
+                // console.log({"index" : index, "diagonalValue" : diagonalValue, "minor" : minor, "constant" : constant});
+            }
+            index++;
+        }
+        return minor;
+    }
 
 }(jsStatistics.API));
