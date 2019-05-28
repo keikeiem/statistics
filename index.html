@@ -12,7 +12,8 @@
 				5, 6, 3, 3, 1,
 				9, 10, 0, 12, 1,
 				13, 14, 15, 16, 1,
-				2, 3, 2, 2, 2
+				5, 7, 10, 11, 23,
+				10, 6, 7, 43, 23
 			];
 
 			var average = jsStat.computeAverage(testArray);
@@ -21,9 +22,9 @@
 
 			// matrix test
 			var matrix = jsStat.setMatrixFromArray(testArray, 5);
-			var minor = jsStat.computeMatrixDeterminant(matrix);
+			var determinant = jsStat.computeMatrixDeterminant(matrix);
 			console.log({"matrix" : matrix});
-			console.log({"minor" : minor});
+			console.log({"determinant" : determinant});
 
 			var rowSwitching = jsStat.rowSwitching(matrix, 1, 2);
 			console.log({"rowSwitch" : rowSwitching});
@@ -33,6 +34,9 @@
 
 			var rowAddition = jsStat.rowAddition(matrix, 1, 2, -3);
 			console.log({"rowAddition" : rowAddition});
+
+			var rowEchelonForm = jsStat.rowEchelonForm(matrix);
+			console.log({"rowEchelonForm" : rowEchelonForm});
 		</script>
 	</head>
 	<body>
