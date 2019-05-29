@@ -96,7 +96,7 @@
         minor[ithRow] = minor[jthRow];
         minor[jthRow] = tmp;
         return minor;
-    }
+    };
 
     jsStatisticsAPI.rowMultiplication = function(matrix, ithRow, constant) {
         /**
@@ -108,7 +108,7 @@
         var minor = JSON.parse(JSON.stringify(matrix));
         minor[ithRow] = minor[ithRow].map(x => x * constant);
         return minor;
-    }
+    };
 
     jsStatisticsAPI.rowAddition = function(matrix, ithRow, jthRow, constant) {
         /**
@@ -121,7 +121,21 @@
         var tmp = minor[jthRow].map(x => x * constant);
         minor[ithRow] = minor[ithRow].map((x, i) => x + tmp[i]);
         return minor;
-    }
+    };
+
+    jsStatisticsAPI.makeZeroValueClean = function(matrix) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var numOfRow = minor.length;
+        var numOfColumn = minor[0].length;
+        for (var i = 0; i < numOfRow; i++) {
+            for (var j = 0; j < numOfColumn; j++) {
+                if (Math.abs(minor[i][j]) < Math.pow(10, -6)) {
+                    minor[i][j] = 0;
+                }
+            }
+        }
+        return minor;
+    };
 
     jsStatisticsAPI.rowEchelonForm = function(matrix) {
         var minor = JSON.parse(JSON.stringify(matrix));
@@ -131,12 +145,13 @@
             var diagonalValue = minor[index][index];
             for (var i = index + 1; i < numOfRow; i++) {
                 var constant = (-1) * (minor[i][index] / diagonalValue);
-                minor = jsStatisticsAPI.rowAddition(minor, i, index, constant);
+                minor = this.rowAddition(minor, i, index, constant);
                 // console.log({"index" : index, "diagonalValue" : diagonalValue, "minor" : minor, "constant" : constant});
             }
             index++;
         }
+        minor = this.makeZeroValueClean(minor);
         return minor;
-    }
+    };
 
 }(jsStatistics.API));
