@@ -154,4 +154,28 @@
         return minor;
     };
 
+    jsStatisticsAPI.reducedRowEchelonForm = function(matrix) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var numOfRow = minor.length;
+        var numOfColumn = minor[0].length;
+        var maximum = Math.min(numOfRow, numOfColumn);
+        var index = 0;
+        while (index < maximum) {
+            var diagonalValue = minor[index][index];
+            if (diagonalValue != 0) {
+                minor = this.rowMultiplication(minor, index, (1 / diagonalValue));
+                for (var i = 0; i < numOfRow; i++) {
+                    if (i != index && minor[i][index] != 0) {
+                        var constant = (-1) * minor[i][index];
+                        minor = this.rowAddition(minor, i, index, constant);
+                    }
+                    // console.log({"index" : index, "diagonalValue" : diagonalValue, "minor" : minor, "constant" : constant, "maximum" : maximum});
+                }
+            }
+            index++;
+        }
+        minor = this.makeZeroValueClean(minor);
+        return minor;
+    };
+
 }(jsStatistics.API));
