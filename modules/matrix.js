@@ -193,17 +193,34 @@
         }
         return identityMatrix;
     };
-/*
+
     jsStatisticsAPI.extendIdentityMatrix = function(matrix) {
         if (!this.isSquareMatrix(matrix)) {
             return console.log('the matrix is not square.');
         } else {
             var minor = JSON.parse(JSON.stringify(matrix));
             var length = minor.length;
-
+            var identityMatrix = this.identityMatrix(length);
+            for (var i = 0; i < length; i++) {
+                minor[i].push(...identityMatrix[i]);
+            }
+            return minor;
         }
     };
 
+    jsStatisticsAPI.removeFrontIdentityMatrix = function(matrix) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var numOfRow = minor.length;
+        var numOfColumn = minor[0].length;
+        if (numOfRow * 2 != numOfColumn) {
+            return false;
+        }
+        for (var i = 0; i < numOfRow; i++) {
+            minor[i] = minor[i].slice(numOfRow, numOfColumn);
+        }
+        return minor;
+    };
+    
     jsStatisticsAPI.inverseOfMatrix = function(matrix) {
         if (!this.isSquareMatrix(matrix)) {
             return console.log('the matrix is not square.');
@@ -211,8 +228,11 @@
             return console.log('this matrix is not an invertible matrix');
         } else {
             var minor = JSON.parse(JSON.stringify(matrix));
-            
+            var extendIdentityMatrix = this.extendIdentityMatrix(minor);
+            var gaussianElimination = this.reducedRowEchelonForm(extendIdentityMatrix);
+            var inverseOfMatrix = this.removeFrontIdentityMatrix(gaussianElimination);
+            return inverseOfMatrix;
         }
     };
-*/
+
 }(jsStatistics.API));
