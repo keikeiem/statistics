@@ -178,4 +178,41 @@
         return minor;
     };
 
+    jsStatisticsAPI.identityMatrix = function(size) {
+        var identityMatrix = [];
+        for (var i = 0; i < size; i++) {
+            var row = [];
+            for (var j = 0; j < size; j++) {
+                if (i == j) {
+                    row.push(1);
+                } else {
+                    row.push(0);
+                }
+            }
+            identityMatrix.push(row);
+        }
+        return identityMatrix;
+    };
+/*
+    jsStatisticsAPI.extendIdentityMatrix = function(matrix) {
+        if (!this.isSquareMatrix(matrix)) {
+            return console.log('the matrix is not square.');
+        } else {
+            var minor = JSON.parse(JSON.stringify(matrix));
+            var length = minor.length;
+
+        }
+    };
+
+    jsStatisticsAPI.inverseOfMatrix = function(matrix) {
+        if (!this.isSquareMatrix(matrix)) {
+            return console.log('the matrix is not square.');
+        } else if (this.computeMatrixDeterminant(matrix) == 0) {
+            return console.log('this matrix is not an invertible matrix');
+        } else {
+            var minor = JSON.parse(JSON.stringify(matrix));
+            
+        }
+    };
+*/
 }(jsStatistics.API));
