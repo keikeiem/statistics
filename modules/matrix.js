@@ -71,7 +71,7 @@
                 var subresult = 0;
                 submatrix = this.computeMatrixMinor(submatrix, 0, i);
                 subresult = multiplier * this.computeMatrixDeterminant(submatrix);
-                console.log({"multiplier" : multiplier, "submatrix" : submatrix, "subresult" : subresult});
+                // console.log({"multiplier" : multiplier, "submatrix" : submatrix, "subresult" : subresult});
                 result.push(subresult);
     
     
@@ -81,10 +81,21 @@
                 // 	return matrix[0][i] * this.computeMatrixDeterminant(submatrix);
                 // }
             }
-            console.log({"result" : result, "matrix" : matrix, "length" : matrix.length});
+            // console.log({"result" : result, "matrix" : matrix, "length" : matrix.length});
             return result.reduce((partial_sum, a) => partial_sum + a,0); 
         }
+    };
+
+    jsStatisticsAPI.computeRowEchelonForm = function(matrix, isReduced) {
+        if (isReduced) return this.computeReducedRowEchelonForm(matrix);
+
+        // row echelon form
+        console.log(matrix);
+    };
+
+    jsStatisticsAPI.computeReducedRowEchelonForm = function(matrix) {
 
     };
+
 
 }(jsStatistics.API));

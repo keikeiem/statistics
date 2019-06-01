@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="./src/statistics.js"></script>
 		<script type="text/javascript" src="./modules/basic.js"></script>
 		<script type="text/javascript" src="./modules/matrix.js"></script>
+		<script type="text/javascript" src="./modules/visualizer.js"></script>
 		<script type="text/javascript">
 			var jsStat = new jsStatistics();
 			var testArray = [
@@ -24,6 +25,8 @@
 			var minor = jsStat.computeMatrixDeterminant(matrix);
 			console.log({"matrix" : matrix});
 			console.log({"minor" : minor});
+
+			console.log(jsStat);
 		</script>
 	</head>
 	<body>
