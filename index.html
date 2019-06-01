@@ -9,11 +9,9 @@
 		<script type="text/javascript">
 			var jsStat = new jsStatistics();
 			var testArray = [
-				1, 2, 3, 4, 1,
-				5, 6, 3, 3, 1,
-				9, 10, 0, 12, 1,
-				13, 14, 15, 16, 1,
-				2, 3, 2, 2, 2
+				1, 2, 3,
+				1, 5, 6,
+				4, 2, 3
 			];
 
 			var average = jsStat.computeAverage(testArray);
@@ -21,12 +19,38 @@
 			var standardDeviation = jsStat.computeStandardDeviation(testArray);
 
 			// matrix test
-			var matrix = jsStat.setMatrixFromArray(testArray, 5);
-			var minor = jsStat.computeMatrixDeterminant(matrix);
+			var matrix = jsStat.setMatrixFromArray(testArray, 3);
+			var determinant = jsStat.computeMatrixDeterminant(matrix);
 			console.log({"matrix" : matrix});
-			console.log({"minor" : minor});
+			console.log({"determinant" : determinant});
 
-			console.log(jsStat);
+			var rowEchelonForm = jsStat.rowEchelonForm(matrix);
+			console.log({"rowEchelonForm" : rowEchelonForm});
+
+			var reducedRowEchelonForm = jsStat.reducedRowEchelonForm(matrix);
+			console.log({"reducedRowEchelonForm" : reducedRowEchelonForm});
+
+			var identityMatrix = jsStat.identityMatrix(1);
+			console.log({"identityMatrix" : identityMatrix});
+
+			var identityMatrix = jsStat.identityMatrix(2);
+			console.log({"identityMatrix" : identityMatrix});
+
+			var identityMatrix = jsStat.identityMatrix(3);
+			console.log({"identityMatrix" : identityMatrix});
+
+			var identityMatrix = jsStat.identityMatrix(4);
+			console.log({"identityMatrix" : identityMatrix});
+
+			var identityMatrix = jsStat.identityMatrix(5);
+			console.log({"identityMatrix" : identityMatrix});
+
+			var extendIdentityMatrix = jsStat.extendIdentityMatrix(matrix);
+			console.log({"extendIdentityMatrix" : extendIdentityMatrix});
+
+			var inverseOfMatrix = jsStat.inverseOfMatrix(matrix);
+			console.log({"inverseOfMatrix" : inverseOfMatrix});
+
 		</script>
 	</head>
 	<body>
