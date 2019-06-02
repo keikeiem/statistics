@@ -245,4 +245,32 @@
         }
     };
 
+    jsStatisticsAPI.matrixMultiplication = function(matrixA, matrixB) {
+        var minorA = JSON.parse(JSON.stringify(matrixA));
+        var minorB = JSON.parse(JSON.stringify(matrixB));
+        var numOfRowA = minorA.length;
+        var numOfColumnA = minorA[0].length;
+        var numOfRowB = minorB.length;
+        var numOfColumnB = minorB[0].length;
+        console.log({"numOfRowA" : numOfRowA, "numOfColumnA" : numOfColumnA, "numOfRowB" : numOfRowB, "numOfColumnB" : numOfColumnB});
+        if (numOfColumnA != numOfRowB) {
+            return console.log('these two matrices cannot be multiplied');
+        }
+        var result = [];
+        var commonValue = numOfColumnA;
+        for (var i = 0; i < numOfRowA; i++) {
+            var row = [];
+            for (var j = 0; j < numOfColumnB; j++) {
+                var dotProductResult = 0;
+                for (var k = 0; k < commonValue; k++) {
+                    var tmp = minorA[i][k] * minorB[k][j];
+                    dotProductResult += tmp;
+                }
+                row.push(dotProductResult);
+            }
+            result.push(row);
+        }
+        return result;
+    };
+
 }(jsStatistics.API));
