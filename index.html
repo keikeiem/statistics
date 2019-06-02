@@ -19,7 +19,7 @@
 			var standardDeviation = jsStat.computeStandardDeviation(testArray);
 
 			// matrix test
-			var matrix = jsStat.setMatrixFromArray(testArray, 3);
+			var matrix = jsStat.setMatrixFromArray(testArray, [3, 3]);
 			var determinant = jsStat.computeMatrixDeterminant(matrix);
 			console.log({"matrix" : matrix});
 			console.log({"determinant" : determinant});
@@ -57,7 +57,7 @@
 				2, 3, 1, 2
 			];
 
-			var matrtixNew = jsStat.setMatrixFromArray(testArrayNew, 4);
+			var matrtixNew = jsStat.setMatrixFromArray(testArrayNew, [3, 4]);
 			var matrixMultiplication = jsStat.matrixMultiplication(matrix, matrtixNew);
 			console.log({"matrixMultiplication" : matrixMultiplication});
 

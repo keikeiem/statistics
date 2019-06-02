@@ -15,17 +15,20 @@
     *    7 8 9
     */
 
-    jsStatisticsAPI.setMatrixFromArray = function(arrayOfNumbers, numOfColumn) {
-        if (arrayOfNumbers.length % numOfColumn) {
-            console.log('the length of array cannot be divided by column size');
+    jsStatisticsAPI.setMatrixFromArray = function(arrayOfNumbers, matrixSize) {
+        if (matrixSize.length != 2) {
+            return console.log('matrix size must be [row, column]');
+        }
+        var numOfRow = matrixSize[0];
+        var numOfColumn = matrixSize[1];
+        if (arrayOfNumbers.length != (numOfRow * numOfColumn)) {
+            console.log('the length of array must be equal to matrix size array');
             return [arrayOfNumbers];
             // the matrix whose size is 1 by arrayOfNumbers.length
         }
 
         var matrixArray = [];
 
-        var length = arrayOfNumbers.length;
-        var numOfRow = length / numOfColumn;
         for (var i = 0; i < numOfRow; i++) {
             matrixArray.push(arrayOfNumbers.slice(i * numOfColumn, (i + 1) * numOfColumn));
         }
