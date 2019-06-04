@@ -52,14 +52,22 @@
 			console.log({"inverseOfMatrix" : inverseOfMatrix});
 
 			var testArrayNew = [
-				3, 2, 3, 1,
-				4, 5, 1, 3,
-				2, 3, 1, 2
+				3, 2, 3,
+				4, 5, 1,
+				2, 3, 1
 			];
 
-			var matrtixNew = jsStat.setMatrixFromArray(testArrayNew, 4);
+			var matrtixNew = jsStat.setMatrixFromArray(testArrayNew, 3);
 			var matrixMultiplication = jsStat.matrixMultiplication(matrix, matrtixNew);
+
+			console.log({"matrtixNew" : matrtixNew});
 			console.log({"matrixMultiplication" : matrixMultiplication});
+
+			var matrixSubtraction = jsStat.matrixSubtraction(matrix, matrtixNew);
+			console.log({"matrixSubtraction" : matrixSubtraction});
+
+			var matrixAddition = jsStat.matrixAddition(matrix, matrtixNew);
+			console.log({"matrixAddition" : matrixAddition});
 
 		</script>
 	</head>
