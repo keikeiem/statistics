@@ -273,4 +273,58 @@
         return result;
     };
 
+    jsStatisticsAPI.matrixSubtraction = function(matrixA, matrixB) {
+        var minorA = JSON.parse(JSON.stringify(matrixA));
+        var minorB = JSON.parse(JSON.stringify(matrixB));
+        var numOfRowA = minorA.length;
+        var numOfColumnA = minorA[0].length;
+        var numOfRowB = minorB.length;
+        var numOfColumnB = minorB[0].length;
+        if (numOfRowA != numOfRowB || numOfColumnA != numOfColumnB) {
+            return console.log('these two matrices are of different sizes');
+        }
+        var numOfRow = numOfRowA;
+        var numOfColumn = numOfColumnA;
+        var result = [];
+        for (var i = 0; i < numOfRow; i++) {
+            var row = [];
+            for (var j = 0; j < numOfColumn; j++) {
+                row.push(minorA[i][j] - minorB[i][j]);
+            }
+            result.push(row);
+        }
+        return result;
+    };
+
+    jsStatisticsAPI.matrixAddition = function(matrixA, matrixB) {
+        var minorA = JSON.parse(JSON.stringify(matrixA));
+        var minorB = JSON.parse(JSON.stringify(matrixB));
+        var numOfRowA = minorA.length;
+        var numOfColumnA = minorA[0].length;
+        var numOfRowB = minorB.length;
+        var numOfColumnB = minorB[0].length;
+        if (numOfRowA != numOfRowB || numOfColumnA != numOfColumnB) {
+            return console.log('these two matrices are of different sizes');
+        }
+        var numOfRow = numOfRowA;
+        var numOfColumn = numOfColumnA;
+        var result = [];
+        for (var i = 0; i < numOfRow; i++) {
+            var row = [];
+            for (var j = 0; j < numOfColumn; j++) {
+                row.push(minorA[i][j] + minorB[i][j]);
+            }
+            result.push(row);
+        }
+        return result;
+    };
+
+    // TODO Finish characteristric polynomial
+    jsStatisticsAPI.characteristicPolynomial = function(matrix) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+
+    };
+
+    // TODO Get roots of polynomial (eigenvalue)
+
 }(jsStatistics.API));
