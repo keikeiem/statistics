@@ -319,6 +319,15 @@
         return result;
     };
 
+    jsStatisticsAPI.matrixScalarMultiplication = function(matrix, scalar) {
+        var minor = JSON.parse(JSON.stringify(matrix));
+        var numOfRow = minor.length;
+        for (var i = 0; i < numOfRow; i++) {
+            minor[i] = minor[i].map(x => x * scalar);
+        }
+        return minor;
+    };
+
     // TODO Find eigenvalues
 
 }(jsStatistics.API));
