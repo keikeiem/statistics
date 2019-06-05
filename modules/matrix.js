@@ -235,7 +235,7 @@
         if (!this.isSquareMatrix(matrix)) {
             return console.log('the matrix is not square.');
         } else if (this.computeMatrixDeterminant(matrix) == 0) {
-            return console.log('this matrix is not an invertible matrix');
+            return console.log('this matrix is not an invertible matrix.');
         } else {
             var minor = JSON.parse(JSON.stringify(matrix));
             var extendIdentityMatrix = this.extendIdentityMatrix(minor);
@@ -254,7 +254,7 @@
         var numOfColumnB = minorB[0].length;
         console.log({"numOfRowA" : numOfRowA, "numOfColumnA" : numOfColumnA, "numOfRowB" : numOfRowB, "numOfColumnB" : numOfColumnB});
         if (numOfColumnA != numOfRowB) {
-            return console.log('these two matrices cannot be multiplied');
+            return console.log('these two matrices cannot be multiplied.');
         }
         var result = [];
         var commonValue = numOfColumnA;
@@ -281,7 +281,7 @@
         var numOfRowB = minorB.length;
         var numOfColumnB = minorB[0].length;
         if (numOfRowA != numOfRowB || numOfColumnA != numOfColumnB) {
-            return console.log('these two matrices are of different sizes');
+            return console.log('these two matrices are of different sizes.');
         }
         var numOfRow = numOfRowA;
         var numOfColumn = numOfColumnA;
@@ -304,7 +304,7 @@
         var numOfRowB = minorB.length;
         var numOfColumnB = minorB[0].length;
         if (numOfRowA != numOfRowB || numOfColumnA != numOfColumnB) {
-            return console.log('these two matrices are of different sizes');
+            return console.log('these two matrices are of different sizes.');
         }
         var numOfRow = numOfRowA;
         var numOfColumn = numOfColumnA;
@@ -319,12 +319,6 @@
         return result;
     };
 
-    // TODO Finish characteristric polynomial
-    jsStatisticsAPI.characteristicPolynomial = function(matrix) {
-        var minor = JSON.parse(JSON.stringify(matrix));
-
-    };
-
-    // TODO Get roots of polynomial (eigenvalue)
+    // TODO Find eigenvalues
 
 }(jsStatistics.API));
