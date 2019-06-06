@@ -328,6 +328,13 @@
         return minor;
     };
 
-    // TODO Find eigenvalues
+    /**
+     * TODO Find eigenvalues
+     * 1. Power method
+     * 2. Jacobi method
+     * 3. Householder method
+     * 4. QR method
+     * 5. Danilevsky method
+     */
 
 }(jsStatistics.API));
