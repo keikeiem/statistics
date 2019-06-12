@@ -328,6 +328,4 @@
         return minor;
     };
 
-    // TODO Find eigenvalues
-
 }(jsStatistics.API));
